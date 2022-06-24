@@ -1,5 +1,4 @@
 package stepDefinitions;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import helper.POJOs.EntriesRepoPOJO;
 import helper.POJOs.EntryPOJO;
@@ -12,7 +11,6 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -75,17 +73,6 @@ public class EntriesSteps {
             Assertions.assertFalse(entry.getLink().isEmpty(), "Test Fail: the value for the field API is empty");
             Assertions.assertFalse(entry.getCategory().isEmpty(), "Test Fail: the value for the field API is empty");
         }
-//        entriesRepoPOJO.getEntries().forEach(o -> {
-//            try {
-//                var convObject = objectMapper.writeValueAsString(o);
-//                EntryPOJO entryPOJO1 = objectMapper.readValue(convObject, EntryPOJO.class);
-//                System.out.println(convObject);
-//            } catch (JsonProcessingException e) {
-//                throw new RuntimeException(e);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });
     }
 
     @Then("Verify for all of the entries, that response contains {} for param {}")

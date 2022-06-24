@@ -1,5 +1,4 @@
 package stepDefinitions;
-
 import helper.PropertiesHelper;
 import helper.ResponseHelper;
 import io.cucumber.java.en.And;
@@ -10,7 +9,6 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
-
 import java.util.List;
 import java.util.Map;
 
