@@ -6,23 +6,24 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.Assertions;
 
 public class SmokeTestSteps {
+  //  private String endpoint1;
     private String baseURL;
     private int currentResponseStatus;
 
-    @Given("get base URL: {}")
+    @Given("get base URL:{}")
     public void setBaseURL(String url) {
         baseURL = url;
     }
 
-    @Given("endpoint: {}")
-    public void setEndpoint(String endpoint) {
+    @Given("endpoint is: {}")
+    public void endpointIsEndpoint(String endpoint) {
         RestAssured.baseURI = baseURL + endpoint;
     }
 
     @When("get Response Status")
     public void getResponseStatus() {
         currentResponseStatus = RestAssured
-                .given()
+                .given().log().all()
                 .when()
                 .get()
                 .getStatusCode();

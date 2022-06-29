@@ -1,14 +1,14 @@
 # tests created by: Petyq Yaneva-Tsvetkova
 
-@StatusCode
+@StatusCode @SmokeTest
 Feature:  verification of Status Code
 
   Background:
     Given get base URL: https://api.publicapis.org/
 
-  @SmokeTest
+
   Scenario Outline: Verification of Status Code on different endpoint
-    Given endpoint: <endpoint>
+    Given endpoint is: <endpoint>
     When get Response Status
     Then Verify Status code is 200
     Examples:

@@ -1,6 +1,6 @@
 # tests created by: Petyq Yaneva-Tsvetkova
 
-@RandomEndpoint
+@RandomEndpointJsonPathApproach
 Feature: Test API random endpoint
 
   Background:
@@ -10,8 +10,8 @@ Feature: Test API random endpoint
   Scenario: Verification of random count
     Given We make a get request to the random endpoint
     And Verify the Status code for random endpoint
-    When  Get the count of all random in List and the count value from the response
-    Then Verify that count and count of all random are the same
+    When Get the count of all random in List and the count value from the response
+    Then Verify that count from response and count of all random are the same
     And Verify the random entries count is equal to 1
 
   @RandomEndpointNotEmptyFields
@@ -56,13 +56,11 @@ Feature: Test API random endpoint
       | cors        | unknown      |
       | category    | Art & Design |
 
-
-
   @RandomEndpointVerificationOfContentWithTwoParameters
   Scenario Outline: Get entry with given parameters and compare result
     Given We make a get request to the random endpoint
     When Verify the Status code for random endpoint
-    When Verify for entry, that response contains <value1> for param <parameter1> and <value2> for param <parameter2>
+    Then Verify for entry, that response contains <value1> for param <parameter1> and <value2> for param <parameter2>
     Examples:
       | parameter1 | value1 | parameter2  | value2 |
       | title      | cat    | description | Rwanda |

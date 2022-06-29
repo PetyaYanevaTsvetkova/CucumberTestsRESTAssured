@@ -31,8 +31,7 @@ Feature: Test API Entries endpoint
       | description | Rwanda  |
       | auth        | apiKey  |
       | cors        | unknown |
-
-   #   | category    | Art & Design | 400 Bad Request |
+#You have reached maximum request limit. 429 StatusCode
 
 
   @EntriesEndpointVerificationOfContentWithTwoParameters

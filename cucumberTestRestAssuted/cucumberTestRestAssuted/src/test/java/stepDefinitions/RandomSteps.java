@@ -1,4 +1,5 @@
 package stepDefinitions;
+
 import helper.PropertiesHelper;
 import helper.ResponseHelper;
 import io.cucumber.java.en.And;
@@ -9,6 +10,7 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
+
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +26,6 @@ public class RandomSteps {
     public void endpointCategories(String endpoint) {
         RestAssured.baseURI = properties.getProperty("url");
         randomEndpoint = endpoint;
-        System.out.println("Set RestAssured.baseURI to: " + RestAssured.baseURI);
     }
 
     @Given("We make a get request to the random endpoint")
@@ -46,7 +47,7 @@ public class RandomSteps {
         countFromResponseValue = jsonPathRandom.getInt("count");
     }
 
-    @Then("Verify that count and count of all random are the same")
+    @Then("Verify that count from response and count of all random are the same")
     public void verifyThatCountAndCountOfAllRandomAreTheSame() {
         Assertions.assertEquals(countFromResponseValue, countOfRandomFromList,
                 "Test fail: the actual count is different from the expected");
@@ -100,7 +101,7 @@ public class RandomSteps {
         String forPar1 = jsonPathRandom.getString(String.format("entries[0].%s", jsonVar1));
 
         String jsonVar2 = properties.getProperty(parameter2);
-        String forPar2 = jsonPathRandom.getString(String.format("entries[0].%s", jsonVar1));
+        String forPar2 = jsonPathRandom.getString(String.format("entries[0].%s", jsonVar2));
 
         Boolean aBoolean1 = forPar1.toLowerCase().contains(value1.toLowerCase());
         Boolean aBoolean2 = forPar2.toLowerCase().contains(value2.toLowerCase());

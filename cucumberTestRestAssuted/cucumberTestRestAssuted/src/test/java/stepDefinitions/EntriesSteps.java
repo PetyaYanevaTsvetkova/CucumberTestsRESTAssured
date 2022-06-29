@@ -20,13 +20,13 @@ public class EntriesSteps {
     private PropertiesHelper properties = PropertiesHelper.getInstance();
     private Response response;
     private EntriesRepoPOJO entriesRepoPOJO;
-    private String entitiesEndpoint;
+   // private String entitiesEndpoint;
 
     @Given("set endpoint for entries: {}")
     public void endpointCategories(String endpoint) {
         RestAssured.baseURI = properties.getProperty("url") + endpoint;
         System.out.println("Set RestAssured.baseURI to: " + RestAssured.baseURI);
-        entitiesEndpoint = endpoint;
+       // entitiesEndpoint = endpoint;
     }
 
     @Given("We make a get request to the entries endpoint")

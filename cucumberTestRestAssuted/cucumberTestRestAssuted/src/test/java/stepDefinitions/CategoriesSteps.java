@@ -1,4 +1,5 @@
 package stepDefinitions;
+
 import helper.POJOs.CategoryPOJO;
 import helper.PropertiesHelper;
 import io.cucumber.java.en.And;
@@ -8,6 +9,8 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
+
+import java.util.List;
 
 public class CategoriesSteps {
     private CategoryPOJO categoryPOJO;
@@ -34,23 +37,24 @@ public class CategoriesSteps {
                 "Status Code is not as expected");
     }
 
-    @Then("Verify the categories count is equal to {int}")
-    public void verifyCount(Integer expectedCount) {
-        System.out.println("Verifying expected count is: " + expectedCount);
-        Assertions.assertEquals(expectedCount, categoryPOJO.getCount(),
-                "Count value is not as expected");
-    }
-
-    @And("Verify that count and count of all categories are the same")
+    @Then("Verify that the CategoryPOJO's field for count and count of all categories list are the same")
     public void verifyTheCountOfAllCategories() {
         System.out.println("Verifying counts match...");
         Assertions.assertEquals(categoryPOJO.getCount(), categoryPOJO.getCategories().size(),
                 "Expected count and categories size don't match");
     }
 
-    @And("Verify response contains {}")
+    @And("Verify the categories count is equal to {int}")
+    public void verifyCount(Integer expectedCount) {
+        System.out.println("Verifying expected count is: " + expectedCount);
+        Assertions.assertEquals(expectedCount, categoryPOJO.getCount(),
+                "Count value is not as expected");
+    }
+
+    @Then("Verify that the response contains {}")
     public void compareTheContentOfCategories(String category) {
-        Assertions.assertTrue(categoryPOJO.getCategories().contains(category),
-                category + " category is missing!");
+        List<String> categories = categoryPOJO.getCategories();
+        Assertions.assertTrue
+                (categories.contains(category),category + " category is missing!");
     }
 }

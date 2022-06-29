@@ -1,6 +1,6 @@
 # tests created by: Petyq Yaneva-Tsvetkova
 
-@CategoriesEndpoint
+@CategoriesEndpointUsingPOJO
 Feature: Test API categories endpoint
 
   Background:
@@ -10,14 +10,14 @@ Feature: Test API categories endpoint
   Scenario: Verification of categories count
     Given We make a get request to the category endpoint
     When Verify Status code for categories endpoint is 200
-    Then Verify that count and count of all categories are the same
+    Then Verify that the CategoryPOJO's field for count and count of all categories list are the same
     And Verify the categories count is equal to 51
 
   @CategoriesEndpointContent
   Scenario Outline: Verifies that the content of the categories is correct
     Given We make a get request to the category endpoint
     When  Verify Status code for categories endpoint is 200
-    Then Verify response contains <category>
+    Then Verify that the response contains <category>
     Examples:
       | category                       |
       | Animals                        |
